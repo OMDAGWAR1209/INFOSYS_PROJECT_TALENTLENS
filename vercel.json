@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "index.py": {
+      "includeFiles": "{app,sample_resumes}/**,TalentLens_Console.html",
+      "maxDuration": 30
+    }
+  }
+}
