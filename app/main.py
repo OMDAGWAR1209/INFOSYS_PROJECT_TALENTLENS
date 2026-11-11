@@ -34,7 +34,8 @@ CONSOLE = ROOT / "TalentLens_Console.html"
 ALLOWED = {".pdf", ".docx", ".doc", ".txt"}
 MAX_BYTES = 8 * 1024 * 1024
 
-DB = Database(os.environ.get("TALENTLENS_DB", ROOT / "talentlens.db"))
+_DEFAULT_DB = Path("/tmp/talentlens.db") if os.environ.get("VERCEL") else ROOT / "talentlens.db"
+DB = Database(os.environ.get("TALENTLENS_DB", _DEFAULT_DB))
 if os.environ.get("TALENTLENS_SEED", "1") == "1" and not DB.list_users():
     S.seed_demo(DB, ROOT / "sample_resumes")
 
